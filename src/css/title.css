@@ -1,0 +1,41 @@
+.Navigation-title-forward-enter {
+  opacity: 0;
+  transform: translateX(50%);
+  z-index: 1;
+}
+
+.Navigation-title-forward-enter.Navigation-title-forward-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.Navigation-title-forward-leave {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.Navigation-title-forward-leave.Navigation-title-forward-leave-active {
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+.Navigation-title-backward-enter {
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+.Navigation-title-backward-enter.Navigation-title-backward-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.Navigation-title-backward-leave {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 1;
+}
+
+.Navigation-title-backward-leave.Navigation-title-backward-leave-active {
+  opacity: 0;
+  transform: translateX(50%);
+}

@@ -1,0 +1,59 @@
+{
+  "name": "react-navigate",
+  "version": "0.1.0",
+  "description": "Navigation on web for React.JS",
+  "main": "lib/index.js",
+  "files": [
+    "src",
+    "lib"
+  ],
+  "scripts": {
+    "test": "standard",
+    "docs": "webpack",
+    "docs:watch": "webpack-dev-server",
+    "prebuild": "mkdir -p lib",
+    "build": "babel src/Navigation.js > lib/index.js",
+    "prepublish": "npm run build"
+  },
+  "repository": "xiaody/react-navigate",
+  "keywords": [
+    "react",
+    "navigation",
+    "controller",
+    "navigator",
+    "component"
+  ],
+  "author": "xiaody",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "react-addons-css-transition-group": "*"
+  },
+  "dependencies": {
+    "throttleit": "1.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "6.18.0",
+    "babel-eslint": "7.1.1",
+    "babel-loader": "6.2.10",
+    "babel-plugin-transform-class-properties": "6.19.0",
+    "babel-plugin-transform-react-jsx": "6.8.0",
+    "babel-preset-es2015": "6.18.0",
+    "babel-preset-stage-3": "6.17.0",
+    "core-js": "2.4.1",
+    "css-loader": "0.26.1",
+    "raf": "3.3.0",
+    "standard": "8.6.0",
+    "style-loader": "0.13.1",
+    "webpack": "2.2.0-rc.0",
+    "webpack-dev-server": "2.2.0-rc.0"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "lib",
+      "docs/*.bundle.js"
+    ]
+  }
+}

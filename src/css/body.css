@@ -1,0 +1,33 @@
+.Navigation-body-forward-enter {
+  transform: translateX(100%);
+  z-index: 4;
+}
+
+.Navigation-body-forward-enter.Navigation-body-forward-enter-active {
+  transform: translateX(0);
+}
+
+.Navigation-body-forward-leave {
+  transform: translateX(0);
+}
+
+.Navigation-body-forward-leave.Navigation-body-forward-leave-active {
+  transform: translateX(-100%);
+}
+
+.Navigation-body-backward-enter {
+  transform: translateX(-100%);
+}
+
+.Navigation-body-backward-enter.Navigation-body-backward-enter-active {
+  transform: translateX(0);
+}
+
+.Navigation-body-backward-leave {
+  transform: translateX(0);
+  z-index: 4;
+}
+
+.Navigation-body-backward-leave.Navigation-body-backward-leave-active {
+  transform: translateX(100%);
+}

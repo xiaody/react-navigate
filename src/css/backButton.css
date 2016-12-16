@@ -1,0 +1,19 @@
+.Navigation-backButton-forward-enter,
+.Navigation-backButton-backward-enter {
+  opacity: 0;
+}
+
+.Navigation-backButton-forward-enter.Navigation-backButton-forward-enter-active,
+.Navigation-backButton-backward-enter.Navigation-backButton-backward-enter-active {
+  opacity: 1;
+}
+
+.Navigation-backButton-forward-leave,
+.Navigation-backButton-backward-leave {
+  opacity: 1;
+}
+
+.Navigation-backButton-forward-leave.Navigation-backButton-forward-leave-active,
+.Navigation-backButton-backward-leave.Navigation-backButton-backward-leave-active {
+  opacity: 0;
+}

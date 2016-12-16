@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <title>react navigate for web</title>
+    <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="iphone.css">
+    <link rel="stylesheet" href="app.css">
+    <meta name="viewport" content="width=device-width">
+    <!-- <meta http&#45;equiv="Content&#45;Security&#45;Policy" content="script&#45;src 'self'; connect&#45;src ws: localhost:*"> -->
+  </head>
+
+  <body>
+    <main>
+      <h1>react navigate</h1>
+      <div id="react-mobile-root" class="mobile-container" hidden></div>
+			<div id="iphone" class="iphone" hidden>
+				<div class="iphone-top">
+					<span class="camera"></span>
+					<span class="sensor"></span>
+					<span class="speaker"></span>
+				</div>
+				<div class="top-bar"></div>
+				<div class="iphone-screen">
+          <div id="react-root" class="container"></div>
+				</div>
+				<div class="buttons">
+					<span class="on-off"></span>
+					<span class="sleep"></span>
+					<span class="up"></span>
+					<span class="down"></span>
+				</div>
+				<div class="bottom-bar"></div>
+				<div class="iphone-bottom">
+					<span></span>
+				</div>
+			</div>
+    </main>
+
+    <i class="ion-chevron-left u-font-preload"></i>
+<script type="text/x-template" id="usage-template">
+import
+  Navigation,
+  {NavLink}
+from 'react-navigate'
+import 'react-navigate/src/Navigation.css'
+
+const views = {
+  home: {
+    name: 'home',
+    title: 'Home page',
+    content () {
+      return (
+        <NavLink to='about'>
+          go to About
+        </NavLink>
+      )
+    }
+  },
+  about: {
+    name: 'about',
+    title: 'Abount',
+    content: 'Oh!'
+  }
+}
+
+<Navigation
+  viewsMap={views}
+  defaultViewName='home'
+/>
+</script>
+    <script src="app.bundle.js" async></script>
+    <script>window.onerror = function (e) {alert(e)}</script>
+  </body>
+</html>

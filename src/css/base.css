@@ -1,0 +1,65 @@
+.Navigation {
+  position: relative;
+  overflow: hidden;
+}
+
+.Navigation-header,
+.Navigation-body {
+  position: absolute;
+  width: 100%;
+}
+
+.Navigation-header,
+.Navigation-title,
+.Navigation-backButton,
+.Navigation-body {
+  transition-property: opacity, transform;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(.36, .66, .04, 1);
+  will-change: opacity, transform;
+}
+
+.Navigation-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
+  z-index: 2;
+}
+
+.Navigation-titleWrapper {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-.5em);
+}
+
+.Navigation-title {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.Navigation-backButton {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  min-width: 18px;
+  background: white;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.Navigation-body {
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+}

@@ -1,0 +1,29 @@
+.Navigation-header-forward-enter {
+  opacity: 0;
+  z-index: 5;
+}
+.Navigation-header-forward-enter.Navigation-header-forward-enter-active {
+  opacity: 1;
+}
+
+.Navigation-header-forward-leave {
+  opacity: 1;
+}
+.Navigation-header-forward-leave.Navigation-header-forward-leave-active {
+  opacity: 0;
+}
+
+.Navigation-header-backward-enter {
+  opacity: 0;
+}
+.Navigation-header-backward-enter.Navigation-header-backward-enter-active {
+  opacity: 1;
+}
+
+.Navigation-header-backward-leave {
+  opacity: 1;
+  z-index: 5;
+}
+.Navigation-header-backward-leave.Navigation-header-backward-leave-active {
+  opacity: 0;
+}
