@@ -12,11 +12,10 @@
 .Navigation-header,
 .Navigation-title,
 .Navigation-backButton,
-.Navigation-body {
-  transition-property: opacity, transform;
+.Navigation-body,
+.Navigation--autoHeight {
   transition-duration: 500ms;
   transition-timing-function: cubic-bezier(.36, .66, .04, 1);
-  will-change: opacity, transform;
 }
 
 .Navigation-header {
@@ -60,6 +59,13 @@
 
 .Navigation-body {
   top: 0;
-  bottom: 0;
   z-index: 1;
+}
+
+.Navigation--fixedHeight {
+  height: 100%;
+}
+
+.Navigation--fixedHeight .Navigation-body {
+  bottom: 0;
 }

@@ -1,3 +1,8 @@
+.Navigation-body {
+  transition-property: transform;
+  will-change: transform;
+}
+
 .Navigation-body-forward-enter {
   transform: translateX(100%);
   z-index: 4;

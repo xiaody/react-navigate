@@ -1,3 +1,8 @@
+.Navigation-title {
+  transition-property: opacity, transform;
+  will-change: opacity, transform;
+}
+
 .Navigation-title-forward-enter {
   opacity: 0;
   transform: translateX(50%);

@@ -1,3 +1,8 @@
+.Navigation-backButton {
+  transition-property: opacity;
+  will-change: opacity;
+}
+
 .Navigation-backButton-forward-enter,
 .Navigation-backButton-backward-enter {
   opacity: 0;

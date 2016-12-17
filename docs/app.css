@@ -43,9 +43,8 @@ h1 {
   background: white;
 }
 
-.Navigation {
-  width: 100%;
-  height: 100%;
+.Navigation--autoHeight {
+  border: 1px solid #eee;
 }
 
 .demo-title {
@@ -90,7 +89,7 @@ h1 {
     display: none;
   }
 
-  .demo-body {
+  .Navigation--fixedHeight .demo-body {
     overflow-y: scroll;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;

@@ -1,3 +1,8 @@
+.Navigation-header {
+  transition-property: opacity;
+  will-change: opacity;
+}
+
 .Navigation-header-forward-enter {
   opacity: 0;
   z-index: 5;

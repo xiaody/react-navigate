@@ -12,11 +12,15 @@ const usageTemplate = $id('usage-template').innerHTML.trim()
 const optionsTemplate = `
 props.viewsMap
 props.defaultViewName
+props.height
 props.headerHeight
 props.backButton
 props.titleClassName
 props.bodyClassName
+props.onNav
 `.trim()
+
+const height = window.location.search.slice(1) || Navigation.defaultProps.height
 
 function Link (props) {
   return (
@@ -102,6 +106,7 @@ class App extends React.Component {
         titleClassName='demo-title'
         bodyClassName='demo-body'
         backButton={backButton}
+        height={height}
       />
     )
   }

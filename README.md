@@ -46,11 +46,13 @@ const views = {
 
 - props.viewsMap
 - props.defaultViewName
+- props.height
 - props.headerHeight
 - props.backButton
 - props.className
 - props.titleClassName
 - props.bodyClassName
+- props.onNav
 
 ## Limitations
 

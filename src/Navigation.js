@@ -22,12 +22,17 @@ class Navigation extends React.Component {
     this.history = [view0]
     this.goto = throttle(this.goto.bind(this), TRANSITION_DURATION)
     this.back = throttle(this.back.bind(this), TRANSITION_DURATION)
+    this.onNav = this.onNav.bind(this)
   }
 
   getChildContext () {
     return {
       navigation: this
     }
+  }
+
+  componentDidMount () {
+    this.onNav()
   }
 
   goto (name) {
@@ -40,7 +45,7 @@ class Navigation extends React.Component {
       prev: this.state.current,
       current: view,
       direction: 'forward'
-    })
+    }, this.onNav)
   }
 
   back (step = 1) {
@@ -59,8 +64,15 @@ class Navigation extends React.Component {
         prev: history[history.length - 2] || null,
         current: history[history.length - 1],
         direction: 'backward'
-      })
+      }, this.onNav)
     }
+  }
+
+  onNav () {
+    if (this.props.height === 'auto') {
+      this.container.style.height = this.props.headerHeight + this.body.clientHeight + 'px'
+    }
+    this.props.onNav(this.state.current, this.state.direction)
   }
 
   evalPart (Content) {
@@ -72,9 +84,9 @@ class Navigation extends React.Component {
 
   render () {
     const {current, prev, direction} = this.state
-    const {headerHeight, backButton, className, titleClassName, bodyClassName} = this.props
+    const {height, headerHeight, backButton, className, titleClassName, bodyClassName} = this.props
     return (
-      <div className={`Navigation ${className}`}>
+      <div className={`Navigation Navigation--${height}Height ${className}`} ref={(node) => (this.container = node)}>
         <Transition part='header' direction={direction}>
           {!current.noHeader && (current.title || prev) && (
             current.header ||
@@ -93,7 +105,12 @@ class Navigation extends React.Component {
           )}
         </Transition>
         <Transition part='body' direction={direction}>
-          <div key={current.name} className={`Navigation-body ${bodyClassName}`} style={current.noHeader ? null : {top: headerHeight}}>
+          <div
+            key={current.name}
+            ref={(node) => (this.body = node)}
+            className={`Navigation-body ${bodyClassName}`}
+            style={current.noHeader ? null : {top: headerHeight}}
+          >
             {this.evalPart(current.content)}
           </div>
         </Transition>
@@ -103,21 +120,25 @@ class Navigation extends React.Component {
 }
 
 Navigation.defaultProps = {
+  height: 'fixed',
   headerHeight: 44,
   backButton: <span>&lt;</span>,
   className: '',
   titleClassName: '',
-  bodyClassName: ''
+  bodyClassName: '',
+  onNav () {}
 }
 
 Navigation.propTypes = {
+  height: React.PropTypes.oneOf(['fixed', 'auto']),
   viewsMap: PropTypes.object.isRequired,
   defaultViewName: PropTypes.string.isRequired,
   headerHeight: PropTypes.number.isRequired,
   backButton: PropTypes.node,
   className: PropTypes.string,
   titleClassName: PropTypes.string,
-  bodyClassName: PropTypes.string
+  bodyClassName: PropTypes.string,
+  onNav: PropTypes.func
 }
 
 function BackButton (props, context) {
