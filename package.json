@@ -1,6 +1,6 @@
 {
   "name": "react-navigate",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Navigation on web for React.JS",
   "main": "lib/index.js",
   "files": [
