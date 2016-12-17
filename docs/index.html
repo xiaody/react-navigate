@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="iphone.css">
     <link rel="stylesheet" href="app.css">
     <meta name="viewport" content="width=device-width">
-    <!-- <meta http&#45;equiv="Content&#45;Security&#45;Policy" content="script&#45;src 'self'; connect&#45;src ws: localhost:*"> -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; connect-src ws: localhost:*">
   </head>
 
   <body>
@@ -71,6 +71,5 @@ const views = {
 />
 </script>
     <script src="app.bundle.js" async></script>
-    <script>window.onerror = function (e) {alert(e)}</script>
   </body>
 </html>
