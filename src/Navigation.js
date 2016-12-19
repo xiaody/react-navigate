@@ -17,12 +17,12 @@ class Navigation extends React.Component {
     this.state = {
       prev: null,
       current: view0,
-      direction: 'forward'
+      direction: 'init'
     }
     this.history = [view0]
     this.goto = throttle(this.goto.bind(this), TRANSITION_DURATION)
     this.back = throttle(this.back.bind(this), TRANSITION_DURATION)
-    this.onNav = this.onNav.bind(this)
+    this.onWillNav = this.onWillNav.bind(this)
   }
 
   getChildContext () {
@@ -32,7 +32,7 @@ class Navigation extends React.Component {
   }
 
   componentDidMount () {
-    this.onNav()
+    this.onWillNav()
   }
 
   goto (name) {
@@ -45,7 +45,19 @@ class Navigation extends React.Component {
       prev: this.state.current,
       current: view,
       direction: 'forward'
-    }, this.onNav)
+    }, this.onWillNav)
+  }
+
+  replace (name) {
+    const view = this.props.viewsMap[name]
+    if (!view) {
+      throw new Error(`Unknown navigation target: ${name}`)
+    }
+    this.history[this.history.length - 1] = view
+    this.setState({
+      current: view,
+      direction: 'forward'
+    }, this.onWillNav)
   }
 
   back (step = 1) {
@@ -64,15 +76,16 @@ class Navigation extends React.Component {
         prev: history[history.length - 2] || null,
         current: history[history.length - 1],
         direction: 'backward'
-      }, this.onNav)
+      }, this.onWillNav)
     }
   }
 
-  onNav () {
+  onWillNav () {
     if (this.props.height === 'auto') {
       this.container.style.height = this.props.headerHeight + this.body.clientHeight + 'px'
     }
-    this.props.onNav(this.state.current, this.state.direction)
+    this.props.onWillNav(this.state.current, this.state.direction)
+    setTimeout(() => this.props.onDidNav(this.state.current, this.state.direction), TRANSITION_DURATION)
   }
 
   evalPart (Content) {
@@ -126,7 +139,8 @@ Navigation.defaultProps = {
   className: '',
   titleClassName: '',
   bodyClassName: '',
-  onNav () {}
+  onWillNav () {},
+  onDidNav () {}
 }
 
 Navigation.propTypes = {
@@ -138,7 +152,8 @@ Navigation.propTypes = {
   className: PropTypes.string,
   titleClassName: PropTypes.string,
   bodyClassName: PropTypes.string,
-  onNav: PropTypes.func
+  onWillNav: PropTypes.func,
+  onDidNav: PropTypes.func
 }
 
 function BackButton (props, context) {
@@ -165,7 +180,7 @@ BackButton.propTypes = {
 
 function NavLink (props, context) {
   const {navigation} = context
-  const {component, to, onClick, ...rest} = props
+  const {component, to, replace, onClick, ...rest} = props
   const Tag = component || 'span'
   const name = to
   const handleClick = (e) => {
@@ -174,7 +189,7 @@ function NavLink (props, context) {
       preventNav = onClick(e) === false
     }
     if (!preventNav) {
-      navigation.goto(name)
+      navigation[replace ? 'replace' : 'goto'](name)
     }
   }
   return (
@@ -205,7 +220,7 @@ function Transition ({part, direction, ...props}) {
 
 Transition.propTypes = {
   part: React.PropTypes.oneOf(['header', 'body', 'backButton', 'title']),
-  direction: React.PropTypes.oneOf(['forward', 'backward'])
+  direction: React.PropTypes.oneOf(['init', 'forward', 'backward'])
 }
 
 export default Navigation
