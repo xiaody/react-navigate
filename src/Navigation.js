@@ -214,6 +214,8 @@ function Transition ({part, direction, ...props}) {
   return (
     <ReactCSSTransitionGroup
       component='div'
+      transitionAppear
+      transitionAppearTimeout={TRANSITION_DURATION}
       transitionEnterTimeout={TRANSITION_DURATION}
       transitionLeaveTimeout={TRANSITION_DURATION}
       {...props}
