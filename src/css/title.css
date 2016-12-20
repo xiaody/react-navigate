@@ -16,13 +16,11 @@
   transform: translateX(0);
 }
 
-.Navigation-title-forward-appear,
 .Navigation-title-forward-leave {
   opacity: 1;
   transform: translateX(0);
 }
 
-.Navigation-title-forward-appear.Navigation-title-forward-appear-active,
 .Navigation-title-forward-leave.Navigation-title-forward-leave-active {
   opacity: 0;
   transform: translateX(-50%);
@@ -40,14 +38,12 @@
   transform: translateX(0);
 }
 
-.Navigation-title-backward-appear,
 .Navigation-title-backward-leave {
   opacity: 1;
   transform: translateX(0);
   z-index: 1;
 }
 
-.Navigation-title-backward-appear.Navigation-title-backward-appear-active,
 .Navigation-title-backward-leave.Navigation-title-backward-leave-active {
   opacity: 0;
   transform: translateX(50%);
