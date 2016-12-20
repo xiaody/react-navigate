@@ -112,7 +112,9 @@ class Navigation extends React.Component {
                 )}
               </Transition>
               <Transition part='title' direction={direction} className='Navigation-titleWrapper'>
-                <span key={current.name} className={`Navigation-title ${titleClassName}`}>{current.title}</span>
+                {current.title &&
+                  <span key={current.name} className={`Navigation-title ${titleClassName}`}>{current.title}</span>
+                }
               </Transition>
             </div>
           )}
