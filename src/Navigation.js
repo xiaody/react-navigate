@@ -158,12 +158,14 @@ Navigation.propTypes = {
 
 function BackButton (props, context) {
   const {navigation} = context
-  const {component, to, onClick, ...rest} = props
+  const {component, to, disabled, onClick, ...rest} = props
   const Tag = component || 'span'
   const handleClick = (e) => {
-    let preventNav = false
-    if (typeof onClick === 'function') {
-      preventNav = onClick(e) === false
+    let preventNav = disabled
+    if (!disabled) {
+      if (typeof onClick === 'function') {
+        preventNav = onClick(e) === false
+      }
     }
     if (!preventNav) {
       navigation.back(to)
@@ -180,13 +182,15 @@ BackButton.propTypes = {
 
 function NavLink (props, context) {
   const {navigation} = context
-  const {component, to, replace, onClick, ...rest} = props
+  const {component, to, disabled, replace, onClick, ...rest} = props
   const Tag = component || 'span'
   const name = to
   const handleClick = (e) => {
-    let preventNav = false
-    if (typeof onClick === 'function') {
-      preventNav = onClick(e) === false
+    let preventNav = disabled
+    if (!disabled) {
+      if (typeof onClick === 'function') {
+        preventNav = onClick(e) === false
+      }
     }
     if (!preventNav) {
       navigation[replace ? 'replace' : 'goto'](name)
