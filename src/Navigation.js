@@ -60,6 +60,18 @@ class Navigation extends React.Component {
     }, this.onWillNav)
   }
 
+  reset (name, direction = 'forward') {
+    const view = this.props.viewsMap[name]
+    if (!view) {
+      throw new Error(`Unknown navigation target: ${name}`)
+    }
+    this.history = [view]
+    this.setState({
+      current: view,
+      direction
+    }, this.onWillNav)
+  }
+
   back (step = 1) {
     const {history} = this
     if (typeof step === 'string') {
