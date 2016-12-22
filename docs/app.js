@@ -17,7 +17,8 @@ props.headerHeight
 props.backButton
 props.titleClassName
 props.bodyClassName
-props.onNav
+props.onWillNav
+props.onDidNav
 `.trim()
 
 const height = window.location.search.slice(1) || Navigation.defaultProps.height

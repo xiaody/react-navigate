@@ -52,7 +52,8 @@ const views = {
 - props.className
 - props.titleClassName
 - props.bodyClassName
-- props.onNav
+- props.onWillNav
+- props.onDidNav
 
 ## Limitations
 
