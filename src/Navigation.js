@@ -23,6 +23,7 @@ class Navigation extends React.Component {
     this.goto = throttle(this.goto.bind(this), TRANSITION_DURATION)
     this.back = throttle(this.back.bind(this), TRANSITION_DURATION)
     this.onWillNav = this.onWillNav.bind(this)
+    this.updateHeight = this.updateHeight.bind(this)
   }
 
   getChildContext () {
@@ -32,7 +33,7 @@ class Navigation extends React.Component {
   }
 
   componentDidMount () {
-    this.onWillNav()
+    this.updateHeight()
   }
 
   goto (name) {
@@ -93,11 +94,19 @@ class Navigation extends React.Component {
   }
 
   onWillNav () {
-    if (this.props.height === 'auto') {
-      this.container.style.height = this.props.headerHeight + this.body.clientHeight + 'px'
-    }
+    this.updateHeight()
     this.props.onWillNav(this.state.current, this.state.direction)
     setTimeout(() => this.props.onDidNav(this.state.current, this.state.direction), TRANSITION_DURATION)
+  }
+
+  updateHeight () {
+    if (typeof this.state.current.height === 'number') {
+      this.container.style.height = this.state.current.height + 'px'
+    } else if (this.props.height === 'auto') {
+      this.container.style.height = this.props.headerHeight + this.body.clientHeight + 'px'
+    } else {
+      this.container.style.height = null
+    }
   }
 
   evalPart (Content) {
