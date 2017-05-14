@@ -135,7 +135,7 @@ function Page4 () {
 }
 
 window.requestAnimationFrame(function bootstrap () {
-  const isMobile = window.innerWidth <= 768 && window.innerHeight <= 768
+  const isMobile = /mobile/i.test(navigator.userAgent)
   const ndContainer = $id(isMobile ? 'react-mobile-root' : 'react-root')
   ndContainer.removeAttribute('hidden')
   if (!isMobile) {

@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import throttle from 'throttleit'
 
@@ -167,7 +168,7 @@ Navigation.defaultProps = {
 }
 
 Navigation.propTypes = {
-  height: React.PropTypes.oneOf(['fixed', 'auto']),
+  height: PropTypes.oneOf(['fixed', 'auto']),
   viewsMap: PropTypes.object.isRequired,
   defaultViewName: PropTypes.string.isRequired,
   headerHeight: PropTypes.number.isRequired,
@@ -248,8 +249,8 @@ function Transition ({part, direction, ...props}) {
 }
 
 Transition.propTypes = {
-  part: React.PropTypes.oneOf(['header', 'body', 'backButton', 'title']),
-  direction: React.PropTypes.oneOf(['init', 'forward', 'backward'])
+  part: PropTypes.oneOf(['header', 'body', 'backButton', 'title']),
+  direction: PropTypes.oneOf(['init', 'forward', 'backward'])
 }
 
 export default Navigation
