@@ -8,9 +8,9 @@
     "lib"
   ],
   "scripts": {
-    "test": "standard",
-    "docs": "webpack",
-    "docs:watch": "webpack-dev-server",
+    "test": "standard && node -c lib/index.js",
+    "docs": "BABEL_ENV=docs webpack",
+    "docs:watch": "BABEL_ENV=docs webpack-dev-server",
     "prebuild": "mkdir -p lib",
     "build": "babel src/Navigation.js > lib/index.js",
     "prepublish": "npm run build"

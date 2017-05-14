@@ -1,10 +1,20 @@
 {
-  "presets": [
-    ["es2015", {"modules": false}],
-    "stage-3"
-  ],
+  "presets": ["es2015", "stage-3"],
   "plugins": [
     "transform-react-jsx",
     "transform-class-properties"
-  ]
+  ],
+
+  "env": {
+    "docs": {
+      "presets": [
+        ["es2015", {"modules": false}],
+        "stage-3"
+      ],
+      "plugins": [
+        "transform-react-jsx",
+        "transform-class-properties"
+      ]
+    }
+  }
 }
