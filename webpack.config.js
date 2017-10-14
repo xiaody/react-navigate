@@ -3,20 +3,6 @@
  */
 'use strict'
 const path = require('path')
-const webpack = require('webpack')
-const target = process.env.npm_lifecycle_event
-
-const plugins = []
-if (target === 'docs') {
-  plugins.push(
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin()
-  )
-}
 
 module.exports = {
   entry: {
@@ -29,14 +15,14 @@ module.exports = {
   },
   module: {
     rules: [
-      {test: /\.jsx?$/, use: 'babel-loader'},
+      {test: /\.jsx?$/, use: 'babel-loader', exclude: /node_modules/},
       {test: /\.css$/, use: ['style-loader', 'css-loader']}
     ]
   },
   performance: {
     hints: false
   },
-  plugins,
+  devtool: 'cheap-module-source-map',
   devServer: {
     host: '0.0.0.0'
   }

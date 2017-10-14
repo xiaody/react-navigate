@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import {CSSTransitionGroup} from 'react-transition-group'
 import throttle from 'throttleit'
 
 const TRANSITION_DURATION = 500
@@ -236,7 +236,7 @@ Navigation.childContextTypes = BackButton.contextTypes = NavLink.contextTypes = 
 
 function Transition ({part, direction, ...props}) {
   return (
-    <ReactCSSTransitionGroup
+    <CSSTransitionGroup
       component='div'
       transitionAppear
       transitionAppearTimeout={TRANSITION_DURATION}
