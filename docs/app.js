@@ -1,9 +1,9 @@
-import 'core-js/fn/array/find-index' // IE 11
+import 'core-js/es/array/find-index' // IE 11
 import 'raf/polyfill' // IE 9
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Navigation, {NavLink, BackButton} from '../src/Navigation'
+import Navigation, { NavLink, BackButton } from '../src/Navigation'
 import '../src/Navigation.css'
 
 const $id = (id) => document.getElementById(id)
@@ -135,6 +135,7 @@ function Page4 () {
 }
 
 window.requestAnimationFrame(function bootstrap () {
+  console.debug('React version', React.version)
   const isMobile = /mobile/i.test(navigator.userAgent)
   const ndContainer = $id(isMobile ? 'react-mobile-root' : 'react-root')
   ndContainer.removeAttribute('hidden')

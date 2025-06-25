@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {CSSTransitionGroup} from 'react-transition-group'
+import { CSSTransitionGroup } from 'react-transition-group'
 import throttle from 'throttleit'
 
 const TRANSITION_DURATION = 500
@@ -75,7 +75,7 @@ class Navigation extends React.Component {
   }
 
   back (step = 1) {
-    const {history} = this
+    const { history } = this
     if (typeof step === 'string') {
       const index = history.findIndex((view) => view.name === step)
       if (index === -1) {
@@ -118,27 +118,26 @@ class Navigation extends React.Component {
   }
 
   render () {
-    const {current, prev, direction} = this.state
-    const {height, headerHeight, backButton, className, titleClassName, bodyClassName} = this.props
+    const { current, prev, direction } = this.state
+    const { height, headerHeight, backButton, className, titleClassName, bodyClassName } = this.props
     return (
       <div className={`Navigation Navigation--${height}Height ${className}`} ref={(node) => (this.container = node)}>
         <Transition part='header' direction={direction}>
           {!current.noHeader && (current.title || prev) && (
             current.header ||
-            <div key='@header' className='Navigation-header' style={{height: headerHeight}}>
-              <Transition part='backButton' direction={direction}>
-                {prev && (
-                  <BackButton key='@backButton' className='Navigation-backButton'>
-                    {backButton}
-                  </BackButton>
-                )}
-              </Transition>
-              <Transition part='title' direction={direction} className='Navigation-titleWrapper'>
-                {current.title &&
-                  <span key={current.name} className={`Navigation-title ${titleClassName}`}>{current.title}</span>
-                }
-              </Transition>
-            </div>
+              <div key='@header' className='Navigation-header' style={{ height: headerHeight }}>
+                <Transition part='backButton' direction={direction}>
+                  {prev && (
+                    <BackButton key='@backButton' className='Navigation-backButton'>
+                      {backButton}
+                    </BackButton>
+                  )}
+                </Transition>
+                <Transition part='title' direction={direction} className='Navigation-titleWrapper'>
+                  {current.title &&
+                    <span key={current.name} className={`Navigation-title ${titleClassName}`}>{current.title}</span>}
+                </Transition>
+              </div>
           )}
         </Transition>
         <Transition part='body' direction={direction}>
@@ -146,7 +145,7 @@ class Navigation extends React.Component {
             key={current.name}
             ref={(node) => (this.body = node)}
             className={`Navigation-body ${bodyClassName}`}
-            style={current.noHeader ? null : {top: headerHeight}}
+            style={current.noHeader ? null : { top: headerHeight }}
           >
             {this.evalPart(current.content)}
           </div>
@@ -181,8 +180,8 @@ Navigation.propTypes = {
 }
 
 function BackButton (props, context) {
-  const {navigation} = context
-  const {component, to, disabled, onClick, ...rest} = props
+  const { navigation } = context
+  const { component, to, disabled, onClick, ...rest } = props
   const Tag = component || 'span'
   const handleClick = (e) => {
     let preventNav = disabled
@@ -205,8 +204,8 @@ BackButton.propTypes = {
 }
 
 function NavLink (props, context) {
-  const {navigation} = context
-  const {component, to, disabled, replace, onClick, ...rest} = props
+  const { navigation } = context
+  const { component, to, disabled, replace, onClick, ...rest } = props
   const Tag = component || 'span'
   const name = to
   const handleClick = (e) => {
@@ -234,7 +233,7 @@ NavLink.propTypes = {
 
 Navigation.childContextTypes = BackButton.contextTypes = NavLink.contextTypes = CONTEXT_TYPES
 
-function Transition ({part, direction, ...props}) {
+function Transition ({ part, direction, ...props }) {
   return (
     <CSSTransitionGroup
       component='div'
@@ -254,4 +253,4 @@ Transition.propTypes = {
 }
 
 export default Navigation
-export {BackButton, NavLink}
+export { BackButton, NavLink }

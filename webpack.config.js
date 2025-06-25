@@ -2,7 +2,7 @@
  * For developing docs
  */
 'use strict'
-const path = require('path')
+const path = require('node:path')
 
 module.exports = {
   entry: {
@@ -15,8 +15,8 @@ module.exports = {
   },
   module: {
     rules: [
-      {test: /\.jsx?$/, use: 'babel-loader', exclude: /node_modules/},
-      {test: /\.css$/, use: ['style-loader', 'css-loader']}
+      { test: /\.jsx?$/, use: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] }
     ]
   },
   performance: {
@@ -24,6 +24,9 @@ module.exports = {
   },
   devtool: 'cheap-module-source-map',
   devServer: {
-    host: '0.0.0.0'
+    host: '0.0.0.0',
+    devMiddleware: {
+      writeToDisk: true
+    }
   }
 }
