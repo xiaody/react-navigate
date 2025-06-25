@@ -1,8 +1,8 @@
 {
   "presets": ["@babel/preset-env"],
   "plugins": [
-    "transform-react-jsx",
-    "transform-class-properties"
+    "@babel/plugin-transform-react-jsx",
+    "@babel/plugin-transform-class-properties"
   ],
 
   "env": {
@@ -10,8 +10,8 @@
       "presets": [
       ],
       "plugins": [
-        "transform-react-jsx",
-        "transform-class-properties"
+        "@babel/plugin-transform-react-jsx",
+        "@babel/plugin-transform-class-properties"
       ]
     }
   }
